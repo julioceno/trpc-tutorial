@@ -1,18 +1,11 @@
-import express from 'express';
-import * as trpc from '@trpc/server';
 import * as trpcExpress from '@trpc/server/adapters/express';
-import { AnyRouter } from '@trpc/server';
+import express from 'express';
 import { appRouter } from './routes';
+import cors from 'cors';
 
 const app = express();
-/* const appRouter = trpc.router();
 
-appRouter.query('hello', {
-  resolve() {
-    return 'Hello world';
-  },
-}); */
-
+app.use(cors());
 app.use(
   '/trpc',
   trpcExpress.createExpressMiddleware({
